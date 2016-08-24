@@ -2,7 +2,7 @@ $(document).foundation();
 
 function GetLatestCompilerURL() {
   $.getJSON("https://api.github.com/repos/dathox/newpascalpack/releases/latest").done(function(json) {
-    var downloadURL = json.assets[0].browser_download_url,
+    var downloadURL = json.html_url,
         md = window.markdownit(),
         newsDate = new Date(json.published_at);
     $("#compiler-windows").attr("href", downloadURL);  
