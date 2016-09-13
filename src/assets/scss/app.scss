@@ -67,10 +67,20 @@
   margin: 0;
 }
 
+.margin-1-bottom {
+    margin: 0 0 1rem 0;
+}
+
 .padding-1 {
     padding: 1rem;
 }
 
 .download-button {
     @include button-style(#467939, 'auto', #b1cbaa);
+}
+
+.top-bar-title {
+    float: left;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
 }
