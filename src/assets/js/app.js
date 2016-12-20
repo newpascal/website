@@ -9,9 +9,17 @@ function GetLatestCompilerURL() {
     $("#last-news-name").text(json.name); 
     $("#last-news-date").text(newsDate.toLocaleString()); 
     $("#last-news").html(md.render(json.body)); 
-  });    
+  });
+}
+
+function GetDoc() {
+  $.get("https://raw.githubusercontent.com/FlKo/LazarusDockedDesktops/master/README.md", function(data) {
+    var md = window.markdownit();
+    $("#docked-doc").html(md.render(data)); 
+  });
 }
 
 $(function() {
   GetLatestCompilerURL();
+  GetDoc();
 });
