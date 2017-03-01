@@ -12,6 +12,18 @@ function GetLatestCompilerURL() {
   });
 }
 
+function GetLatestFpcupdeluxeURL() {
+  $.getJSON("https://api.github.com/repos/newpascal/fpcupdeluxe/releases/latest").done(function(json) {
+    var downloadURL = json.html_url,
+        md = window.markdownit(),
+        newsDate = new Date(json.published_at);
+    $("#fpcupdeluxe").attr("href", downloadURL);  
+    $("#fpcupdeluxe-last-news-name").text(json.name); 
+    $("#fpcupdeluxe-last-news-date").text(newsDate.toLocaleString()); 
+    $("#fpcupdeluxe-last-news").html(md.render(json.body)); 
+  });
+}
+
 function GetDoc() {
   $.get("https://raw.githubusercontent.com/FlKo/LazarusDockedDesktops/master/README.md", function(data) {
     var md = window.markdownit();
@@ -20,6 +32,10 @@ function GetDoc() {
 }
 
 $(function() {
-  GetLatestCompilerURL();
-  GetDoc();
+  if (pageName=="docked") {
+    GetDoc();
+  } else if (pageName=="download") {
+    GetLatestCompilerURL();
+    GetLatestFpcupdeluxeURL();
+  }  
 });
