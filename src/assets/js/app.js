@@ -25,7 +25,7 @@ function GetLatestFpcupdeluxeURL() {
 }
 
 function GetDoc() {
-  $.get("https://raw.githubusercontent.com/FlKo/LazarusDockedDesktops/master/README.md", function(data) {
+  $.get("https://raw.githubusercontent.com/maciej-izak/LazarusDockedDesktops/master/README.md", function(data) {
     var md = window.markdownit();
     $("#docked-doc").html(md.render(data)); 
   });
